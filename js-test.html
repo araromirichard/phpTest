@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Test task</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="master.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function processList(aEmployeeList) {
+            $("#employeeList ul").empty();
+            for (sEmployee in aEmployeeList) {
+                var sWorkHours = aEmployeeList[sEmployee];
+
+                var _li = $("<li>");
+                _li.data('workhours', sWorkHours);
+                _li.text(sEmployee);
+                _li.appendTo("#employeeList ul");
+            }
+        }
+
+        function loadEmployeeList(sName) {
+            $.post('employee_list.php', {
+                name: sName
+            }, function(sJSONData) {
+                var aList = $.parseJSON(sJSONData);
+                processList(aList);
+            });
+        }
+
+
+        $(function() {
+            $("#employee_filter .management").click(function() {
+                loadEmployeeList('management');
+            });
+            $("#employee_filter .devs").click(function() {
+                loadEmployeeList('devs');
+            });
+            $("#employee_filter .hr").click(function() {
+                loadEmployeeList('hr');
+            });
+
+            $("#employeeList li").click(function() {
+                alert("This employee worked for " + $(this).data('workhours'));
+            });
+        });
+        //function to handle touch events on top nav in tap devices as it has a hover pseudo class for desktop devices but for tab devices to work it needs to listen to the touchEvent used for touch/ tap devices and Here I am using the touchEvent type called touchStart and a listener call "ontouchstart"
+        function isTapDevice() {
+            return "ontouchstart" in window
+        }
+        if (isTapDevice()) {
+            $("ul.top__nav > li").each(function() {
+
+                $(this).addClass("touch-top-level");
+
+            });
+            $("li.touch-top-level").one("click", function(e) {
+                e.preventDefault();
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div id="top-menu">
+        <ul>
+            <li>
+                <a href="#">Employees</a>
+                <ul class="top__nav" style="margin-top: 10px;">
+                    <li href="#">Management</li>
+                    <li href="#">Devs</li>
+                    <li href="#">HR</li>
+                </ul>
+            </li>
+
+            <li><a href="#">Customers</a></li>
+        </ul>
+    </div>
+
+    <div id="employee_filter">
+        <ul>
+            <li><a class="management">Management</a></li>
+            <li><a class="devs">Devs</a></li>
+            <li><a class="hr">Human Resources</a></li>
+        </ul>
+    </div>
+    <div data-workhours="10" id="employee_list">
+        <ul>
+            <li><a class="test">Test</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

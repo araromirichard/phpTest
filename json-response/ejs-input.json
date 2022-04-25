@@ -1,0 +1,17 @@
+{
+    "topmenu": [{
+            "name": "Employees",
+            "link": "#",
+            "sub": [{ "name": "Management", "link": "#" },
+                { "name": "Devs", "link": "#" },
+                { "name": "HR", "link": "#" }
+            ]
+        },
+        { "name": "Customers", "link": "#", "sub": [] }
+    ],
+    "filter": [
+        { "name": "management", "label": "Manbagement" },
+        { "name": "devs", "label": "Devs" },
+        { "name": "hr", "label": "Human Resources" }
+    ]
+}

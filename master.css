@@ -1,0 +1,84 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#top-menu {
+    background-color: #333;
+    overflow: auto;
+    padding: 2px;
+    padding-left: 20px;
+    /* padding-bottom: 50px; */
+}
+
+#top-menu ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    background-color: #333;
+}
+
+#top-menu ul li {
+    display: inline-block;
+    position: relaitve;
+}
+
+#top-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 5px;
+    display: block;
+}
+
+#top-menu ul li ul {
+    display: none;
+    position: absolute;
+    margin-top: 0px;
+    padding: 10px;
+}
+
+#top-menu ul li ul li {
+    display: block;
+    text-align: center;
+    color: #fff;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #666;
+    padding: 10px;
+}
+
+#top-menu ul li:hover ul {
+    display: block;
+}
+
+#employee_filter {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    border-width: 1px;
+    border-color: #ccc;
+}
+
+#employee_filter ul {
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#employee_filter ul li {
+    display: inline-block;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+#employee_filter ul li:hover {
+    background-color: #999;
+}
